@@ -2,7 +2,6 @@
   "name": "nextjs-turso-starter",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "npm run drizzle-kit migrate && npm run next build",

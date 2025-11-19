@@ -2,6 +2,7 @@
   "name": "nextjs-turso-starter",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "bunx drizzle-kit migrate && bun run --bun next build",

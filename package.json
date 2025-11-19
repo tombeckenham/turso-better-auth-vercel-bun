@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "npm run drizzle-kit migrate && npm run next build",
+    "build": "npx drizzle-kit migrate && npm run next build",
     "start": "next start",
     "lint": "next lint",
     "db:generate": "drizzle-kit generate",

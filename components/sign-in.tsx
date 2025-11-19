@@ -86,10 +86,10 @@ export default function SignIn() {
                   password,
                 },
                 {
-                  onRequest: (ctx) => {
+                  onRequest: () => {
                     setLoading(true);
                   },
-                  onResponse: (ctx) => {
+                  onResponse: () => {
                     setLoading(false);
                   },
                 }

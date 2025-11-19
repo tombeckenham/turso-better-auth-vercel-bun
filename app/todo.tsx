@@ -6,6 +6,10 @@ import { InferSelectModel } from "drizzle-orm";
 
 import { todosTable } from "@/db/schema";
 import { removeTodoAction, toggleTodoAction } from "./actions";
+import { Card, CardContent } from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Button } from "@/components/ui/button";
+import { Trash2 } from "lucide-react";
 
 // Dynamically import react-confetti to avoid SSR issues
 const ReactConfetti = dynamic(() => import("react-confetti"), {
@@ -53,7 +57,7 @@ export function Todo({ item }: { item: InferSelectModel<typeof todosTable> }) {
   };
 
   return (
-    <li className="flex items-center justify-between rounded bg-white/5 p-6 text-white">
+    <>
       {showConfetti && (
         <ReactConfetti
           width={windowSize.width}
@@ -62,36 +66,34 @@ export function Todo({ item }: { item: InferSelectModel<typeof todosTable> }) {
           numberOfPieces={200}
         />
       )}
-      <div className="flex w-full items-center space-x-3">
-        <button
-          className="p-1 text-3xl"
-          onClick={handleToggle}
-          disabled={isPending}
-        >
-          {item.completed ? "✅" : "☑️"}
-        </button>
-        <span className="flex-1">{item.description}</span>
-      </div>
-      <button
-        className="p-1 flex items-center justify-between transition hover:bg-white/10 rounded"
-        onClick={handleRemove}
-        disabled={isPending}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="size-6"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M6 18 18 6M6 6l12 12"
-          />
-        </svg>
-      </button>
-    </li>
+      <Card className="bg-white/5 border-none text-white">
+        <CardContent className="p-4 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-3 flex-1">
+            <Checkbox
+              checked={!!item.completed}
+              onCheckedChange={handleToggle}
+              disabled={isPending}
+              className="border-white/50 data-[state=checked]:bg-white data-[state=checked]:text-black"
+            />
+            <span
+              className={`flex-1 ${
+                item.completed ? "line-through text-white/50" : ""
+              }`}
+            >
+              {item.description}
+            </span>
+          </div>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="hover:bg-white/10 text-white/70 hover:text-white h-8 w-8"
+            onClick={handleRemove}
+            disabled={isPending}
+          >
+            <Trash2 className="h-4 w-4" />
+          </Button>
+        </CardContent>
+      </Card>
+    </>
   );
 }

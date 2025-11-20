@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
-  serverExternalPackages: ["£"],
+  serverExternalPackages: ["@libsql/isomorphic-ws"],
 };
 
 export default nextConfig;

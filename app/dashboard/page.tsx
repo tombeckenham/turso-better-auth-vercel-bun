@@ -1,3 +1,4 @@
+"use server";
 import { Todos } from "@/app/todos";
 import {
   Card,

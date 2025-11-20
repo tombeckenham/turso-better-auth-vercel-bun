@@ -32,7 +32,6 @@
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
-    "@libsql/client": "^0.15.8",
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
